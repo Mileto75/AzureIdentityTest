@@ -1,0 +1,9 @@
+﻿1. Create a Requirement class
+	implements IAuthorizationRequirement
+2. Create a requirement handler class
+	implements AuthorizationHandler<MyRequirement>
+3. Add configuration to startup class
+	--> add policy: options.AddPolicy("IsTeacher", policy => 
+                policy.Requirements.Add(new IsTeacherRequirement("student")));
+	--> register handler: services.AddSingleton<IAuthorizationHandler,IsTeacherHandler>();
+	--> Handlers that use entity framework==> no singleton registration
